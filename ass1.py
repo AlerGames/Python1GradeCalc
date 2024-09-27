@@ -4,7 +4,11 @@ total_grade: float = 0.0
 #takes in the amount of completed assignments, assignments assigned and the weight of them all 
 def add_grade_by_completed_assignments(weight: float, assignments_assigned: int, text: str):
     global total_grade
-    total_grade += ((int(input(text)) / assignments_assigned)) * weight 
+    #clamps the maximum grade for the completed assignments if > the amount of assigned assignments
+    if int(input(text)) >= assignments_assigned:
+        total_grade += 1 * weight
+    else:
+        total_grade += ((int(input(text)) / assignments_assigned)) * weight 
 
 #takes in the weight of an exam and the score
 def add_grade_by_exam(weight:float, text:str):
